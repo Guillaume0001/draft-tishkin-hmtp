@@ -3924,6 +3924,21 @@ Submission Servers MAY replace the IP address of the Client in the
 Received header field with a placeholder ({{trace}}) to protect the
 privacy of the user.
 
+## Forged DNS key records
+
+Key records are exposed in the same way.
+The Sending Domain is established by the key record that the
+Receiving Server retrieves from DNS ({{signing-keys}}). If DNS
+responses are not authenticated, an attacker who can modify the
+responses seen by a Receiving Server can substitute a key record
+that it controls and sign requests that the Receiving Server accepts
+as originating from the legitimate Sending Domain, including its
+alignment with the Envelope Sender ({{alignment}}). This is the same
+exposure as that of DKIM ({{RFC6376}}) to forged key records.
+Receiving Servers SHOULD validate DNS responses when retrieving key
+records, as for SVCB records, and Sending Domains SHOULD sign their
+zones with DNSSEC
+
 # IANA Considerations {#iana}
 
 ## Underscored and Globally Scoped DNS Node Name
