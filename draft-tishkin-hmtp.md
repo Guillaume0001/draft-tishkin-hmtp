@@ -3926,18 +3926,17 @@ privacy of the user.
 
 ## Forged DNS key records
 
-Key records are exposed in the same way.
-The Sending Domain is established by the key record that the
-Receiving Server retrieves from DNS ({{signing-keys}}). If DNS
-responses are not authenticated, an attacker who can modify the
-responses seen by a Receiving Server can substitute a key record
-that it controls and sign requests that the Receiving Server accepts
-as originating from the legitimate Sending Domain, including its
-alignment with the Envelope Sender ({{alignment}}). This is the same
-exposure as that of DKIM ({{RFC6376}}) to forged key records.
-Receiving Servers SHOULD validate DNS responses when retrieving key
-records, as for SVCB records, and Sending Domains SHOULD sign their
-zones with DNSSEC
+The same exposure applies to key records.  The Sending Domain is
+established by the key record that the Receiving Server retrieves
+from DNS ({{signing-keys}}).  If DNS responses are not
+authenticated, an attacker who can modify the responses seen by a
+Receiving Server can substitute a key record that it controls, and
+sign requests that the Receiving Server accepts as originating from
+the legitimate Sending Domain, including their alignment with the
+Envelope Sender ({{alignment}}).  This is the exposure of DKIM
+{{RFC6376}} to forged key records.  The recommendations above,
+DNSSEC signing and validation, therefore also apply to the retrieval
+of key records.
 
 # IANA Considerations {#iana}
 
